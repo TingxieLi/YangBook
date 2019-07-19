@@ -1,0 +1,50 @@
+{% extends 'base_detail.html' %}
+
+{% load static %}
+
+{% block title %}阳哥书城-章节{% endblock title %}
+
+{% block topfiles %}
+    <link rel="stylesheet" href="{% static 'css/chapter.css' %}">
+{% endblock topfiles %}
+
+{% block content %}
+    <!-- 头部 -->
+    <header id="header">
+        <nav>
+            <div class="container">
+                <a class="btn btn-info pull-left" href="javascript:history.go(-1);">
+                    <span class="glyphicon glyphicon-step-backward"></span>
+                    返回
+                </a>
+                {{ chapter_page.0.book }}
+                <a class="btn btn-success pull-right" href="/"><span class="glyphicon glyphicon-home"></span> 首页</a>
+            </div>
+        </nav>
+    </header>
+    <!-- /头部 -->
+
+    <!-- 章节列表 -->
+    <section id="chapter_list">
+        <div class="container">
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <h3 class="panel-title">章节目录</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="menu">
+                            {% for chapter in chapter_list %}
+                            <li class="col-md-3">
+                                <a href="{% url 'book:content' chapter.id %}">{{ chapter.title }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </section>
+    <!-- /章节列表 -->
+
+{% endblock content %}

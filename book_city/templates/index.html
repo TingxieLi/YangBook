@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}阳哥书城-首页{% endblock title %}
+
+{% block topfiles %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock topfiles %}
+
+
+{% block content %}
+  <!-- 轮播图 -->
+  <section id="yang_carousel">
+    <div class="container">
+      <div class="row">
+        <div id="carousel" class="carousel slide" data-ride="carousel">
+          <!-- 圆点 -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+            <li data-target="#carousel" data-slide-to="3"></li>
+          </ol>
+
+          <!-- 轮播内容 -->
+          <div class="carousel-inner" role="listbox">
+          {% for banner in banner_list %}
+            <div class="item {% if forloop.counter == 1 %}active{% endif %}">
+              <a href="{% url 'book:detail' banner.book_id %}"><img src="{{ MEDIA_URL }}{{ banner.image }}" width="100%"></a>
+            </div>
+          {% endfor %}
+          </div>
+
+          <!-- 左右控制按键 -->
+          <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /轮播图 -->
+
+  <!-- 热门小说 -->
+  <section id="yang_hot">
+    <div class="container">
+      <div class="row">
+            <div class="title">
+                <h2><span class="glyphicon glyphicon-fire"></span> <strong>热门小说</strong></h2>
+            </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+        {% for book in hot_books %}
+          <div class="col-md-6 book">
+          <div class="media">
+            <div class="media-left">
+              <a href="{% url 'book:detail' book.id %}">
+                <img class="media-object" src="{{ MEDIA_URL }}{{ book.image }}" alt="{{ book.title }}" width="100" height="133"
+                  class="img-responsive" onerror="this.src='{% static 'images/default.jpg' %}'">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="name media-heading">{{ book.title }}</h4>
+              <div class="desc text-muted">{{ book.desc }}</div>
+              <div class="book_bottom" style="margin-bottom:0;">
+                <div class="author badge"><span class="glyphicon glyphicon-user"></span> {{ book.author }}</div>
+                <div class="recommend_num badge pull-right">推荐数:{{ book.recommend_num }}</div>
+                <div class="love_num badge pull-right">收藏:{{ book.collect_num }}</div>
+                <div class="click_num badge hidden-xs pull-right">点击:{{ book.click_num }}</div>
+              </div>
+            </div>
+            <div class="media-right"></div>
+          </div>
+        </div>
+        {% endfor %}
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /热门小说 -->
+
+    <!-- 新书上架 -->
+    <section id="yang_new">
+        <div class="container">
+            <div class="row">
+                <div class="title">
+                    <h2><span class="glyphicon glyphicon-book"></span> <strong>新书上架</strong></h2>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        {% for book in new_books %}
+                            <div class="col-md-6 book">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href="{% url 'book:detail' book.id %}">
+                                            <img class="media-object" src="{{ MEDIA_URL }}{{ book.image }}" alt="{{ book.title }}" width="100" height="133" class="img-responsive"  onerror="this.src='{% static 'images/default.jpg' %}'">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="name media-heading">{{ book.title }}</h4>
+                                        <div class="desc text-muted">{{ book.desc }}</div>
+                                        <div class="book_bottom" style="margin-bottom:0;">
+                                            <div class="author badge"><span
+                                                    class="glyphicon glyphicon-user"></span> {{ book.author }}</div>
+                                            <div class="recommend_num badge pull-right">
+                                                推荐数:{{ book.recommend_num }}</div>
+                                            <div class="love_num badge pull-right">收藏:{{ book.collect_num }}</div>
+                                            <div class="click_num badge hidden-xs pull-right">
+                                                点击:{{ book.click_num }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="media-right"></div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /新书上架 -->
+
+  <!-- 分类推荐 -->
+  <section id="yang_type">    
+    <div class="container">
+      <div class="row">
+          <div class="title">
+            <h2><span class="glyphicon glyphicon-th-list"></span> <strong>分类推荐</strong></h2>
+          </div>
+
+          <div class="panel panel-success">
+              <div class="panel-heading">
+                  <h3 class="panel-title">
+                      武侠小说
+                      <a href="{% url 'book:type' 'wx' 1 %}" class="pull-right" style="cursor:pointer;text-decoration: none;">更多 <span class="glyphicon glyphicon-share-alt"></span> </a>
+                  </h3>
+              </div>
+              <div class="panel-body">
+                  <div style="overflow:auto;">
+                  <div class="books">
+                  {% for book in wx_books %}
+                    <div class="type_book">
+                      <a href="{% url 'book:detail' book.id %}">
+                        <img src="{{ MEDIA_URL }}{{ book.image }}" alt="{{ book.title }}" width="100" height="133" onerror="this.src='{% static 'images/default.jpg' %}'">
+                        <h5 class="text-center">{{ book.title }}</h5>
+                      </a>
+                    </div>
+                  {% endfor %}
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="panel panel-info">
+              <div class="panel-heading">
+                  <h3 class="panel-title">
+                      玄幻小说
+                      <a href="{% url 'book:type' 'xh' 1 %}" class="pull-right" style="cursor:pointer;text-decoration: none;">更多 <span class="glyphicon glyphicon-share-alt"></span> </a>
+                  </h3>
+              </div>
+              <div class="panel-body">
+                  <div style="overflow:auto;">
+                  <div class="books">
+                  {% for book in xh_books %}
+                    <div class="type_book">
+                      <a href="{% url 'book:detail' book.id %}">
+                        <img src="{{ MEDIA_URL }}{{ book.image }}" alt="{{ book.title }}" width="100" height="133" onerror="this.src='{% static 'images/default.jpg' %}'">
+                        <h5 class="text-center">{{ book.title }}</h5>
+                      </a>
+                    </div>
+                  {% endfor %}
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="panel panel-warning">
+              <div class="panel-heading">
+                  <h3 class="panel-title">
+                      都市言情
+                      <a href="{% url 'book:type' 'ds' 1 %}" class="pull-right" style="cursor:pointer;text-decoration: none;">更多 <span class="glyphicon glyphicon-share-alt"></span> </a>
+                  </h3>
+              </div>
+              <div class="panel-body">
+                  <div style="overflow:auto;">
+                  <div class="books">
+                  {% for book in ds_books %}
+                    <div class="type_book">
+                      <a href="{% url 'book:detail' book.id %}">
+                        <img src="{{ MEDIA_URL }}{{ book.image }}" alt="{{ book.title }}" width="100" height="133" onerror="this.src='{% static 'images/default.jpg' %}'">
+                        <h5 class="text-center">{{ book.title }}</h5>
+                      </a>
+                    </div>
+                  {% endfor %}
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="panel panel-danger">
+              <div class="panel-heading">
+                  <h3 class="panel-title">
+                      恐怖灵异
+                      <a href="{% url 'book:type' 'kb' 1 %}" class="pull-right" style="cursor:pointer;text-decoration: none;">更多 <span class="glyphicon glyphicon-share-alt"></span> </a>
+                  </h3>
+              </div>
+              <div class="panel-body">
+                  <div style="overflow:auto;">
+                  <div class="books">
+                  {% for book in kb_books %}
+                    <div class="type_book">
+                      <a href="{% url 'book:detail' book.id %}">
+                        <img src="{{ MEDIA_URL }}{{ book.image }}" alt="{{ book.title }}" width="100" height="133" onerror="this.src='{% static 'images/default.jpg' %}'">
+                        <h5 class="text-center">{{ book.title }}</h5>
+                      </a>
+                    </div>
+                  {% endfor %}
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <!-- /分类推荐 -->
+{% endblock content %}
+
+{% block bottomfiles %}
+    <script src="{% static 'js/index.js' %}"></script>
+{% endblock bottomfiles %}
+
+

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分类</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/type.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header id="yang_header">
+        <nav class="navbar navbar-default navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#yang_nav"
+                        aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <img src="images/logo.png" alt="logo" height="40">
+                    </a>
+                </div>
+    
+    
+    
+    
+                <div class="collapse navbar-collapse" id="yang_nav">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+                        <li class="active"><a href="type.html"><span class="glyphicon glyphicon-th-list"></span> 分类</a></li>
+                        <li><a href="rank.html"><span class="glyphicon glyphicon-stats"></span> 排行</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#vip"><span
+                                    class="glyphicon glyphicon-tower"></span> 会员</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-left">
+                        <div class="input-group">
+                            <input type="text" name="book_name" class="form-control" placeholder="输入书名">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-danger"><span
+                                        class="glyphicon glyphicon-search"></span></button>
+                            </span>
+                        </div>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon glyphicon-log-out"></span> 注销</a></li>
+                        <li><a href="user_center_info.html"><span class="glyphicon glyphicon-education"></span> 个人中心</a></li>
+                        <!-- <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                                        <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    
+        <!-- vip模态框 -->
+        <div id="vip" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                        <h5 class="modal-title text-center" id="mySmallModalLabel">开通会员</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group">
+                            <div class="input-group-addon">账号</div>
+                            <input type="email" class="form-control" id="exampleInputAmount" value="1543250617@qq.com"
+                                placeholder="充值帐号">
+                        </div>
+                        <div id="vip_time" class="btn-group" data-toggle="buttons" style="width:100%; margin-top:10px;">
+                            <label class="btn btn-success active" style="width:33%;">
+                                <input type="radio" name="options" id="option1" autocomplete="off" value="10"> 一月
+                            </label>
+                            <label class="btn btn-success" style="width:33%;">
+                                <input type="radio" name="options" id="option2" autocomplete="off" value="25"> 一季
+                            </label>
+                            <label class="btn btn-success" style="width:33%;">
+                                <input type="radio" name="options" id="option3" autocomplete="off" value="85"> 一年
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <h4 class="text-muted pull-left">需支付：<strong id="price" style="color:red;">10</strong>&nbsp;元</h4>
+                        <button type="button" class="btn btn-danger">去支付</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- /头部 -->
+
+    <!-- 中部 -->
+    <section id="yang_middle">
+        <div class="container">
+            <div class="row">
+                <div id="mid_left">
+                    <ul id="book_menu">
+                        <li class="active"><a href="">玄幻</a></li>
+                        <li><a href="">仙侠</a></li>
+                        <li><a href="">都市</a></li>
+                        <li><a href="">军史</a></li>
+                        <li><a href="">网游</a></li>
+                        <li><a href="">科幻</a></li>
+                        <li><a href="">灵异</a></li>
+                        <li><a href="">言情</a></li>
+                        <li><a href="">其他</a></li>
+                        <li><a href="">完本</a></li>
+                    </ul>
+                </div>
+                <div id="mid_right">
+                    <ul id="books" class="media-list">
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot1.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot2.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot3.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot4.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot5.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot6.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot1.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot2.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot3.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot4.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot5.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot6.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot1.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot2.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot3.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot4.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot5.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot6.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot5.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="images/hot6.jpg" alt="..." width="100" height="133">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">我的时空旅社</h4>
+                                <div class="desc text-muted">
+                                    金色光雨,金色光雨,金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色金色光雨,金色光雨,,金色光雨.
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> 情商古月</div>
+                                    <div class="love_num badge pull-right">收藏:15</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:85</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 中部 -->
+
+    <!-- 分页 -->
+    <section id="yang_page">
+        <div class="container">
+            <div class="row">
+                <nav aria-label="Page navigation" class="text-center" >
+                    <ul class="pagination pagination-lg">
+                        <li>
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <!-- /分页 -->
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/type.js"></script>
+    <script src="js/vip.js"></script>
+</body>
+
+</html> 

@@ -1,0 +1,29 @@
+/* 通用样式 */
+
+.badge{
+    border-radius: 0;
+    padding: 6px;
+ }
+
+
+ /* 小说列表 */
+
+#book_list{
+    width: 100%;
+    float: right;
+}
+
+#book_list .media:first-child {
+   margin-top: 15px;
+}
+
+#book_list #books .book{
+   margin: 10px 0;
+}
+
+#book_list #books .desc{
+   height: 80px;
+   overflow: hidden;
+   line-height: 26px;
+}
+

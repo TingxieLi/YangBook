@@ -1,0 +1,43 @@
+/* 通用样式 */
+body{
+    background-color: #f0f0f0;
+}
+
+.row{
+    background-color: #FFE7BA;
+}
+
+/* 头部 */
+#header nav{
+    height: 50px;
+    background-color: #222;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    line-height: 50px;
+}
+
+#header nav a{
+    margin-top:8px;
+}
+
+/* 内容 */
+
+#content .row{
+    font-family: Kaiti;
+}
+
+#content .read_content{
+    font-size: 24px;
+}
+
+/* 尾部 */
+#footer .row a{
+    width: 15%;
+}
+
+@media screen and (max-width:768px){
+    #footer .row a{
+        width:32%;
+    }
+}

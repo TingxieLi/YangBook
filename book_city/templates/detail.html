@@ -1,0 +1,306 @@
+{% extends 'base_detail.html' %}
+{% load static %}
+{% block title %}阳哥书城-详情{% endblock title %}
+
+{% block topfiles %}
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+{% endblock topfiles %}
+
+{% block content %}
+    <!-- 头部 -->
+    <header id="header">
+        <nav>
+            <div class="container">
+                <a class="btn btn-info pull-left" href="javascript:history.go(-1);">
+                    <span class="glyphicon glyphicon-step-backward"></span> 返回
+                </a>
+                {{ book.title }}
+                <a class="btn btn-success pull-right" href="/"><span class="glyphicon glyphicon-home"></span>
+                    首页</a>
+            </div>
+        </nav>
+    </header>
+    <!-- /头部 -->
+
+    <!-- 书籍基本信息 -->
+    <section id="book_info">
+        <div class="container">
+            <div class="row">
+                <div id="right">
+                    <div class="media">
+                        <div class="media-left media-middle">
+                            <a href="javascript:;">
+                                <img class="media-object" src="{{ MEDIA_URL }}{{ book.image }}" alt="{{ book.title }}" width="100" height="133" onerror="this.src='{% static 'images/default.jpg' %}'">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ book.title }}</h4>
+                            <p>作者：{{ book.author }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;推荐：{{ book.recommend_num }}</p>
+                            <p>分类：{{ book.get_type_display }}&nbsp;&nbsp;&nbsp;点击：{{ book.click_num }}</p>
+                            <p>状态：{{ book.get_status_display }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收藏：{{ book.collect_num }}</p>
+                            <p>上架：{{ book.create_time }}</p>
+                        </div>
+                    </div>
+                    <div class="book_button">
+                        <a href="{% url 'book:content' chapter_id %}" class="btn btn-danger">开始阅读</a>
+                        <button class="btn btn-info" type="button" id="collect">{% if collect_status %}移出{% else %}加入{% endif %}书架</button>
+                    </div>
+                    <div class="book_button">
+                        <a href="{% url 'book:chapter' book.id %}" class="btn btn-warning">章节目录</a>
+                        <button class="btn btn-success download">下载本书</button>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">小说简介</h3>
+                        </div>
+                        <div class="panel-body">
+                            {{ book.desc }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /书籍基本信息 -->
+
+    <!-- 作者其他书 -->
+    <section id="author_book">
+        <div class="container">
+            <div class="row">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            作者其他作品
+                            <a href="{% url 'author:detail' book.author.id %}" class="pull-right" style="cursor:pointer;text-decoration: none;"><span class="glyphicon glyphicon-forward"></span> 查看更多</a>
+                        </h3>
+                        
+                    </div>
+                    <div class="panel-body">
+                        <div style="overflow:auto;">
+                            <ul class="books">
+                            {% for author_book in author_book_list %}
+                                <li class="book">
+                                    <a href="{% url 'book:detail' author_book.id %}">
+                                        <img src="{{ MEDIA_URL }}{{ author_book.image }}" alt="{{ author_book.title }}" width="100" height="133" onerror="this.src='{% static 'images/default.jpg' %}'">
+                                        <h5 class="text-center">{{ author_book.title }}</h5>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /作者其他书 -->
+
+    <!-- 推荐用户 -->
+    <section id="author_book">
+        <div class="container">
+            <div class="row">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            推荐本书的用户
+                            <div id="recommend" class="pull-right" style="cursor:pointer;text-decoration: none;"><span class="glyphicon glyphicon-thumbs-up"></span> 推荐本书</div>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div style="overflow:auto;">
+                            <ul class="books">
+                            {% for recommend in book.recommend_set.all|slice:':3' %}
+                                <li class="book">
+                                    <img class="img-circle" src="{{ MEDIA_URL }}{{ recommend.recommend_man.avatar }}" alt="{{ recommend.recommend_man.nickname }}" width="80" height="80">
+                                    <h5 class="text-center">{{ recommend.recommend_man.nickname }}</h5>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /推荐用户 -->
+
+    <!-- 书籍推荐 -->
+    <section id="recommend_book">
+        <div class="container">
+            <div class="row">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            好书推荐
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div style="overflow:auto;">
+                            <ul class="books">
+                            {% for recommend_book in recommend_book_list %}
+                                <li class="book">
+                                    <a href="{% url 'book:detail' recommend_book.id %}">
+                                        <img src="{{ MEDIA_URL }}{{ recommend_book.image }}" alt="{{ recommend_book.title }}" width="100" height="133" onerror="this.src='{% static 'images/default.jpg' %}'">
+                                        <h5 class="text-center">{{ recommend_book.title }}</h5>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /书籍推荐 -->
+
+    <!-- 评论 -->
+    <section id="comments">
+        <div class="container">
+            <div class="row">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            书友评论
+                            <a class="pull-right" data-toggle="modal" data-target="#my_comment" style="cursor:pointer;text-decoration: none;"><span class="glyphicon glyphicon-new-window"></span> 发表评论</a>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        {% for comment in comment_list %}
+                        <div class="media comment">
+                            <div class="media-left">
+                                <img class="media-object img-circle" src="{{ MEDIA_URL }}{{ comment.comment_man.avatar }}" alt="{{ comment.comment_man.name }}" height="70" width="70" class="img-circle">
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading text-muted">{{ comment.comment_man.nickname }}</h5>
+                                <p>{{ comment.comment_content }}</p>
+                                <time class="text-muted">{{ comment.create_time }}</time>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /评论 -->
+
+
+
+    <!-- 尾部 -->
+    <footer id="yang_footer">
+        <div>
+            <img src="{% static 'images/logo.png' %}" alt="logo" width="200">
+        </div>
+    </footer>
+    <!-- /尾部 -->
+    {% if request.user.is_authenticated %}
+    <!-- 评论模态框 -->
+    <div class="modal fade" id="my_comment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">评论</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">评论内容:</label>
+                        <textarea class="form-control" id="message-text" style="resize: none;"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary send_commend">发布</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /评论模态框 -->
+    {% endif %}
+{% endblock content %}
+
+{% block bottomfiles %}
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/detail.js' %}"></script>
+<script>
+    $(function () {
+        $('#collect').click(function () {
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'operation:collect' %}",
+                data: {
+                    book_id: {{ book.id }},
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    if (data.status == 'ok') {
+                        location.reload();
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            })
+        });
+
+        $('#recommend').click(function () {
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'operation:recommend' %}",
+                data: {
+                    book_id: {{ book.id }},
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    if (data.status == 'ok') {
+                        alert(data.msg);
+                        location.reload();
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            })
+        });
+
+        $('.send_commend').click(function () {
+            let comment_content = $('#message-text').val();
+            $.ajax({
+                type: 'POST',
+                url: '{% url "operation:comment" %}',
+                data:{
+                    comment_content: comment_content,
+                    book_id: {{ book.id }},
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success:function (data) {
+                    if (data.status == 'ok') {
+                        alert(data.msg);
+                        location.reload();
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            })
+        })
+
+        $('.download').click(function () {
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'operation:download' %}",
+                data: {
+                    book_id: {{ book.id }},
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function (data) {
+                    if (data.status == 'ok') {
+                        open(data.download_url)
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            })
+        })
+    })
+</script>
+{% endblock bottomfiles %}

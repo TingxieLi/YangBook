@@ -1,0 +1,52 @@
+
+/* 头像 */
+
+
+#avatar_input .fileinput-button {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+#avatar_input .fileinput-button input{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    opacity: 0;
+    font-size: 200px;
+}
+/* 信息 */
+
+#info{
+    margin-top: 20px;
+}
+
+#info .badge{
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 12px;
+    background-color: rgba(249, 205, 273, 0.7);
+    width: 100%;
+    font-size: 18px;
+    font-family: Kaiti;
+    color: red;
+}
+
+#info .input-group{
+    width: 100%;
+}
+
+#info .input-group .input-group-addon{
+    width: 20%;
+    background-color: #d1acd8;
+    color: #fff;
+}
+
+#gender_select{
+    width: 100%;
+}
+
+#gender_select label{
+    width: 50%;
+    border-radius: 0;
+}

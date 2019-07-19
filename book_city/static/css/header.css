@@ -1,0 +1,12 @@
+/* 头部 */
+#yang_header .navbar{
+    margin-bottom: 0px;
+}
+
+#yang_header .navbar-brand{
+    padding: 7px 20px;
+}
+
+#yang_header .navbar-header .navbar-toggle{
+    margin: 8px 10px;
+ }

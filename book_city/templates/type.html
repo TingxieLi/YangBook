@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}阳哥书城-分类{% endblock title %}
+
+{% block topfiles %}
+    <link rel="stylesheet" href="{% static 'css/type.css' %}">
+{% endblock topfiles %}
+
+{% block content %}
+    <!-- 中部 -->
+    <section id="yang_middle">
+        <div class="container">
+            <div class="row">
+                <div id="mid_left">
+                    <ul id="book_menu">
+                        <li {% if category == 'wx' %}class="active"{% endif %}><a href="{% url 'book:type' 'wx' 1 %}">武侠小说</a></li>
+                        <li {% if category == 'xh' %}class="active"{% endif %}><a href="{% url 'book:type' 'xh' 1 %}">玄幻小说</a></li>
+                        <li {% if category == 'ds' %}class="active"{% endif %}><a href="{% url 'book:type' 'ds' 1 %}">都市言情</a></li>
+                        <li {% if category == 'kb' %}class="active"{% endif %}><a href="{% url 'book:type' 'kb' 1 %}">恐怖灵异</a></li>
+                        <li {% if category == 'xd' %}class="active"{% endif %}><a href="{% url 'book:type' 'xd' 1 %}">现代文学</a></li>
+                        <li {% if category == 'zt' %}class="active"{% endif %}><a href="{% url 'book:type' 'zt' 1 %}">侦探推理</a></li>
+                        <li {% if category == 'kh' %}class="active"{% endif %}><a href="{% url 'book:type' 'kh' 1 %}">科幻小说</a></li>
+                        <li {% if category == 'cy' %}class="active"{% endif %}><a href="{% url 'book:type' 'cy' 1 %}">穿越架空</a></li>
+                        <li {% if category == 'gd' %}class="active"{% endif %}><a href="{% url 'book:type' 'gd' 1 %}">古典名著</a></li>
+                        <li {% if category == 'ls' %}class="active"{% endif %}><a href="{% url 'book:type' 'ls' 1 %}">历史军事</a></li>
+                        <li {% if category == 'wy' %}class="active"{% endif %}><a href="{% url 'book:type' 'wy' 1 %}">网游小说</a></li>
+                    </ul>
+                </div>
+                <div id="mid_right">
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="{% if sort == 'click_num' %}active{% endif %} text-center" style="width: 33%;"><a href="{% url 'book:type' category 1 %}?sort=click_num">点击</a></li>
+                        <li role="presentation" class="{% if sort == 'collect_num' %}active{% endif %} text-center" style="width: 33%;"><a href="{% url 'book:type' category 1 %}?sort=collect_num">收藏</a></li>
+                        <li role="presentation" class="{% if sort == 'recommend_num' %}active{% endif %} text-center" style="width: 33%;"><a href="{% url 'book:type' category 1 %}?sort=recommend_num">推荐</a></li>
+                    </ul>
+
+                    <ul id="books" class="media-list">
+                        {% for book in book_page %}
+                        <li class="media col-md-6 book">
+                            <div class="media-left">
+                                <a href="{% url 'book:detail' book.id %}">
+                                    <img class="media-object" src="{{ MEDIA_URL }}{{ book.image }}" alt="..." width="100" height="133" onerror="this.src='{% static 'images/default.jpg' %}'">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="name media-heading">{{ book.title }}</h4>
+                                <div class="desc text-muted">
+                                    {{ book.desc }}
+                                </div>
+                                <div class="book_bottom">
+                                    <div class="author badge"><span class="glyphicon glyphicon-user"></span> {{ book.author }}</div>
+                                    <div class="love_num badge pull-right">收藏:{{ book.collect_num }}</div>
+                                    <div class="click_num badge hidden-xs pull-right">点击:{{ book.click_num }}</div>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 中部 -->
+
+    <!-- 分页 -->
+    <section id="yang_page">
+        <div class="container">
+            <div class="row">
+                <nav aria-label="Page navigation" class="text-center" >
+                    <ul class="pagination">
+                    {% if book_page.has_previous %}
+                        <li>
+                            <a href="{% url 'book:type' category book_page.previous_page_number %}{% if sort %}?sort={{ sort }}{% endif %}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+
+                    {% for page_num in pages %}
+                        <li {% if page_num == book_page.number %}class="active"{% endif %}><a href="{% url 'book:type' category page_num %}{% if sort %}?sort={{ sort }}{% endif %}">{{ page_num }}</a></li>
+                        {% endfor %}
+
+                    {% if book_page.has_next %}
+                        <li>
+                            <a href="{% url 'book:type' category book_page.next_page_number %}{% if sort %}?sort={{ sort }}{% endif %}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <!-- /分页 -->
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}
+
+{% block bottomfiles %}
+    <script src="{% static 'js/type.js' %}"></script>
+{% endblock bottomfiles %}

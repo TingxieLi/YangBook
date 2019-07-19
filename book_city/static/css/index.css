@@ -1,0 +1,90 @@
+/* 通用样式 */
+
+.badge{
+   border-radius: 0;
+   padding: 6px;
+}
+
+/* 头部 */
+#yang_header .navbar{
+    margin-bottom: 0;
+}
+
+#yang_header .navbar-brand{
+    padding: 7px 20px;
+}
+
+#yang_header .navbar-header .navbar-toggle{
+    margin: 8px 10px;
+ }
+
+ .title{
+    color: #d9534f;
+    text-align: center;
+    padding: 0;
+     font-family: Kaiti;
+ }
+
+ /* 热门小说 */
+ #yang_hot .panel-body,
+ #yang_new .panel-body{
+     padding: 0;
+ }
+
+ .media{
+    margin-left: 5%;
+ } 
+
+ .book{
+     padding: 15px 10px;
+     border-bottom: 1px solid #e6e6e6;
+}
+
+ .book .media-left{
+    width: 15%;
+}
+
+ .book .media-body{
+    width: 70%;
+ } 
+
+ .book .desc{
+     line-height: 25px;
+     margin: 9px 0;
+     height: 70px;
+     overflow: hidden;
+ }
+
+ .book .click_num{
+    background-color:#a1d0d2;
+ }
+
+ .book .love_num{
+    background-color:#0AB4F7;
+    margin: 0 8px;
+ }
+
+ .book .recommend_num{
+    background-color:#d1acd8;
+ }
+
+ /* 分类推荐 */
+
+.alert{
+    margin-bottom: 0;
+}
+
+.panel{
+    margin-bottom: 0;
+}
+
+ #yang_type .type_book{
+    float: left;
+    padding: 20px;
+     width: 140px;
+ }
+
+ #yang_type .type_book a{
+    text-decoration: none;
+    color: #000;
+ }

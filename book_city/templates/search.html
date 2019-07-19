@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}阳哥书城-搜索{% endblock title %}
+
+{% block topfiles %}
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- 主要内容 -->
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <div class="panel panel-success">
+                    <div class="panel-heading text-center">
+                        <h3 class="panel-title">搜索结果</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <div id="book_list">
+                            <ul id="books" class="media-list">
+                            {% for book in book_list %}
+                                <li class="media col-md-6 book">
+                                    <div class="media-left">
+                                        <a href="{% url 'book:detail' book.id %}">
+                                            <img class="media-object" src="{{ MEDIA_URL }}{{ book.image }}" alt="{{ book.title }}" width="100" height="133" onerror="this.src='{% static 'images/default.jpg' %}'">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="name media-heading">
+                                            {{ book.title }}
+                                        </h4>
+                                        <div class="desc text-muted">
+                                            {{ book.desc }}
+                                        </div>
+                                        <div class="book_bottom">
+                                            <div class="recommend_num badge pull-right">推荐:{{ book.recommend_num }}</div>
+                                            <div class="love_num badge pull-right">收藏:{{ book.collect_num }}</div>
+                                            <div class="click_num badge hidden-xs pull-right">点击:{{ book.click_num }}</div>
+                                            <div class="author badge"><span class="glyphicon glyphicon-user"></span> {{ book.author }}</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% empty %}
+                                <h3 class="text-center">未找到符合的书</h3>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /主要内容 -->
+{% endblock content %}
+
+{% block footer %}{% endblock footer %}

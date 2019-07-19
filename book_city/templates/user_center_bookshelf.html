@@ -1,0 +1,65 @@
+{% extends 'base_user_center.html' %}
+{% load static %}
+
+{% block title %}阳哥书城-书架{% endblock title %}
+
+{% block topfiles %}
+        <link rel="stylesheet" href="{% static 'css/user_center_bookshelf.css' %}">
+{% endblock topfiles %}
+
+{% block main_content %}
+    <div id="book_list">
+        <ul id="books" class="media-list">
+            {% for collect in collect_list  %}
+            <li class="media col-md-6 book">
+                <div class="media-left">
+                    <a href="{% url 'book:detail' collect.collect_book.id %}">
+                        <img class="media-object" src="{{ MEDIA_URL }}{{ collect.collect_book.image }}" alt="{{ collect.collect_book.title }}" width="100" height="133" onerror="this.src='{% static 'images/default.jpg' %}'">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="name media-heading">
+                        {{ collect.collect_book.title }}
+                    </h4>
+                    <div class="desc text-muted">
+                        {{ collect.collect_book.desc }}
+                    </div>
+                    <div class="book_bottom">
+                        <button type="button" book_id="{{ collect.collect_book.id }}" class="btn btn-danger btn-sm pull-right collect">移出书架</button>
+                        <div class="author badge"><span class="glyphicon glyphicon-user"></span> {{ collect.collect_book.author }}</div>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock main_content %}
+
+{% block footer %}{% endblock footer %}
+
+{% block bottomfiles %}
+    <script>
+        $(function () {
+            $('.collect').each(function () {
+                let book_id = $(this).attr('book_id');
+                $(this).click(function () {
+                    $.ajax({
+                        type: 'POST',
+                        url: "{% url 'operation:collect' %}",
+                        data: {
+                            book_id: book_id,
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                        },
+                        success: function (data) {
+                            if (data.status == 'ok') {
+                                location.reload()
+                            }else {
+                                alert(data.msg);
+                            }
+                        }
+                    })
+                })
+            })
+        })
+    </script>
+{% endblock bottomfiles %}

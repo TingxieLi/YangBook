@@ -1,0 +1,132 @@
+{% extends 'base_detail.html' %}
+{% load static %}
+
+{% block title %}阳哥书城-作者{% endblock title %}
+
+{% block topfiles %}
+    <link rel="stylesheet" href="{% static 'css/author.css' %}">
+{% endblock topfiles %}
+
+{% block content %}
+    <!-- 头部 -->
+    <header id="header">
+        <nav>
+            <div class="container">
+                <a class="btn btn-info pull-left" href="javascript:history.go(-1);">
+                    <span class="glyphicon glyphicon-step-backward"></span> 返回
+                </a>
+                {{ author.name }}
+                <a class="btn btn-success pull-right" href="/"><span class="glyphicon glyphicon-home"></span>
+                    首页</a>
+            </div>
+        </nav>
+    </header>
+    <!-- /头部 -->
+
+    <!-- 作者信息 -->
+    <section id="author_info">
+        <div class="container">
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="media">
+                            <div class="media-left">
+                                <img src="{{ MEDIA_URL }}{{ author.avatar }}" alt="" width="70" height="70" class="img-circle">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">{{ author.name }}</h4>
+                                <h5>关注数：{{ author.attention_num }}</h5>
+                                <h5>作品数：{{ author.book_set.count }}</h5>
+                            </div>
+                            <div class="media-right">
+                                <button type="button" class="btn btn-danger attention">
+                                    <span class="glyphicon glyphicon-heart"></span> {% if author_status %}取消关注{% else %}关注{% endif %}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-info">
+                      <div class="panel-heading">
+                            <h3 class="panel-title">作者简介</h3>
+                      </div>
+                      <div class="panel-body">
+                          {{ author.desc }}
+                      </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- 作者信息 -->
+
+    <!-- 作者作品 -->
+    <section id="author_books">
+        <div class="container">
+            <div class="row">                
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">作者作品</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div id="book_list">
+                            <ul id="books" class="media-list">
+                                {% for book in author.book_set.all %}
+                                    <li class="media col-md-6 book">
+                                    <div class="media-left">
+                                        <a href="{% url 'book:detail' book.id %}">
+                                            <img class="media-object" src="{{ MEDIA_URL }}{{ book.image }}" alt="{{ book.title }}" width="100" height="133" onerror="this.src='{% static 'images/default.jpg' %}'">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="name media-heading">
+                                            {{ book.title }}
+                                        </h4>
+                                        <div class="desc text-muted">
+                                            {{ book.desc }}
+                                        </div>
+                                        <div class="book_bottom">
+                                            <div class="click_num badge pull-right">点击:{{ book.click_num }}</div>
+                                            <div class="collect_num badge pull-right hidden-xs">收藏:{{ book.collect_num }}</div>
+                                            <div class="recommend_num badge pull-right hidden-xs">推荐:{{ book.recommend_num }}</div>
+                                            <div class="type badge">{{ book.get_type_display }}</div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /作者作品 -->
+{% endblock content %}
+
+{% block bottomfiles %}
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script>
+        $(function () {
+            $('.attention').click(function () {
+                $.ajax({
+                        type: 'POST',
+                        url: "{% url 'operation:attention' %}",
+                        data: {
+                            author_id: {{ author.id }},
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                        },
+                        success: function (data) {
+
+                            if (data.status == 'ok') {
+                                location.reload()
+                            }else{
+                                alert(data.msg);
+                            }
+                        }
+                    })
+            })
+        })
+    </script>
+{% endblock bottomfiles %}

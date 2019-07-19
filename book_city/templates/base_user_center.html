@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- 主要内容 -->
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <ul class="nav nav-tabs">
+                            <li role="presentation" {% if title1 == 'info' %}class="active"{% endif %}><a href="{% url 'user:info' %}"><span class="glyphicon glyphicon-user"></span> 信息</a></li>
+                            <li role="presentation" {% if title1 == 'collect' %}class="active"{% endif %}><a href="{% url 'user:collect' %}"><span class="glyphicon glyphicon-align-justify"></span> 书架</a></li>
+                            <li role="presentation" {% if title1 == 'history' %}class="active"{% endif %}><a href="{% url 'user:history' %}"><span class="glyphicon glyphicon-knight"></span> 历史</a></li>
+                            <li role="presentation" {% if title1 == 'attention' %}class="active"{% endif %}><a href="{% url 'user:attention' %}"><span class="glyphicon glyphicon-heart"></span> 关注</a></li>
+                        </ul>
+                        {% block main_content %}{% endblock main_content %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /主要内容 -->
+{% endblock content %}
+

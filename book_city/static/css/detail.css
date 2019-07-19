@@ -1,0 +1,100 @@
+/* 通用样式 */
+.row{
+    background-color: #f0f0f0;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 头部 */
+
+#header nav{
+    height: 50px;
+    background-color: #222;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    line-height: 50px;
+}
+
+#header nav a{
+    margin-top:8px;
+}
+
+/* 书籍信息 */
+
+#right{
+    float: left;
+}
+
+#book_info .media-left{
+    padding-left:10px;
+}
+
+#book_info .media-body{
+    padding-top:10px;
+}
+
+#book_info .book_button a,
+#book_info .book_button button{
+    width:15%;
+    margin-bottom: 5px;
+}
+
+#book_info .panel{
+    margin-top:10px;
+}
+
+#book_info .panel .panel-body{
+    background-color:#f0f0f0;
+}
+
+@media screen and (max-width:768px){
+    #book_info .book_button a,
+    #book_info .book_button button{
+        width:49%;
+    }
+}
+
+/* 作者其他书 */
+#author_book .book,
+#recommend_book .book{
+    float: left;
+    margin: 0 20px;
+    width: 100px;
+ }
+
+ #author_book .book a,
+ #recommend_book .book a{
+    text-decoration: none;
+    color: #000;
+ }
+
+/* 评论 */
+
+ #comments .comment {
+    border-bottom:1px solid #e6e6e6;
+ }
+
+ /* 尾部 */
+ #yang_footer {
+    margin-top: 0;
+    width: 100%;
+    height: 150px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    background: url('../images/bg.png') no-repeat center;
+    color: #fff;
+ }
+
+ #yang_footer div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;    
+ }
+

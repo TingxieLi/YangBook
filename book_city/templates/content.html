@@ -1,0 +1,67 @@
+{% extends 'base_detail.html' %}
+{% load static %}
+
+{% block title %}阳哥书城-正文{% endblock title %}
+
+{% block topfiles %}
+    <link rel="stylesheet" href="{% static 'css/content.css' %}">
+{% endblock topfiles %}
+
+{% block content %}
+    <header id="header">
+        <nav>
+            <div class="container">
+                <a class="btn btn-info pull-left" href="javascript:history.go(-1);">
+                    <span class="glyphicon glyphicon-step-backward"></span> 返回
+                </a>
+                {{ chapter.book.title }}
+                <a class="btn btn-success pull-right" href="/"><span class="glyphicon glyphicon-home"></span> 首页</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                    <button type="button" class="btn btn-danger pull-right bookmark"><span class="glyphicon glyphicon-bookmark"></span>书签</button>
+                <div class="page-header">                    
+                    <h2 class="text-center">{{ chapter.title }}</h2>
+                </div>
+                <div class="read_content">
+                    {{ chapter.content|safe }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="footer">
+        <div class="container">
+            <div class="row text-center">                
+                <a {% if precious_chapter %}href="{% url 'book:content' precious_chapter.id %}" {% else %}disabled{% endif %} class="btn btn-primary">上一章</a>
+                <a href="{% url 'book:chapter' chapter.book.id %}" class="btn btn-warning">目录</a>
+                <a {% if next_chapter %}href="{% url 'book:content' next_chapter.id %}" {% else %}disabled{% endif %} class="btn btn-primary">下一章</a>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+
+{% block bottomfiles %}
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script>
+        $(function () {
+            $('.bookmark').click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: "{% url 'operation:bookmark' %}",
+                    data:{
+                        chapter_id: {{ chapter.id }},
+                        csrfmiddlewaretoken: '{{ csrf_token }}'
+                    },
+                    success:function (callbak) {
+                        alert(callbak.msg)
+                    }
+                })
+            })
+        })
+    </script>
+{% endblock bottomfiles %}

@@ -1,0 +1,87 @@
+/* 通用样式 */
+
+.badge{
+   border-radius: 0;
+   padding: 6px;
+}
+
+.row{
+    background-color: #f0f0f0;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+ /* 中部 */
+ 
+ #mid_left{
+     width: 20%;
+     float: left;
+     text-align: center;
+     font-size: 14px;
+ }
+
+ #mid_left li{
+    background-color: rgba(0, 0, 0, 0.7);   
+ }
+
+ #mid_left a{
+    text-decoration: none;
+    padding: 15px 0;
+    display: block;
+    color: #9d9d9d;
+ }
+
+ #mid_left a:hover{
+     color: #fff;
+ }
+
+ #mid_left li.active{
+    background-color: #aaa;
+ }
+
+ #mid_left li.active a{
+     color: #000;
+ }
+
+ #mid_right{
+     width: 80%;
+     float: right;
+ }
+
+ #mid_right li.active a{
+     border: 0;
+ }
+
+ #mid_right li.active a{
+     border-bottom:2px solid skyblue;
+     background-color: transparent;
+}
+
+ #mid_right .media:first-child{
+    margin-top: 15px;
+}
+
+#mid_right #books .book{
+    border: 1px solid #e6e6e6;
+    margin: 10px 0;
+}
+
+#mid_right #books .desc{
+    height: 80px;
+    overflow: hidden;
+    line-height: 26px;
+}
+
+ #mid_right .book_bottom .click_num{
+    background-color:#a1d0d2;
+ }
+
+ #mid_right .book_bottom .love_num{
+    background-color:#d1acd8;;
+    margin: 0 8px;
+ }

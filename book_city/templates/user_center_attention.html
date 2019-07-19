@@ -1,0 +1,64 @@
+{% extends 'base_user_center.html' %}
+{% load static %}
+
+{% block title %}阳哥书城-关注{% endblock title %}
+
+{% block topfiles %}
+    <link rel="stylesheet" href="{% static 'css/user_center_attention.css' %}">
+{% endblock topfiles %}
+
+
+{% block main_content %}
+    <ul class="media-list">
+    {% for attention in attention_list %}
+        <li class="author">
+            <div class="media">
+                <div class="media-left media-top">
+                    <a href="#" class="text-center">
+                        <img class="img-circle" src="{{ MEDIA_URL }}{{ attention.attention_author.avatar }}" alt="{{ attention.attention_author.name }}" height="70" width="70">
+                        {{ attention.attention_author.name }}
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h5 class="media-heading" style="width:80%;">
+                        <div class="pull-left" style="width:50%;">作品数:{{ attention.attention_author.book_set.count }}</div>
+                        <div class="pull-left" style="width:50%;">关注数:{{ attention.attention_author.attention_num }}</div>
+                    </h5>
+                </div>
+                <div class="media-right">
+                    <button type="button" author_id="{{ attention.attention_author.id }}" class="btn btn-danger attention">取消关注</button>
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock main_content %}
+
+{% block footer %}{% endblock footer %}
+
+{% block bottomfiles %}
+    <script>
+        $(function () {
+            $('.attention').each(function () {
+                let author_id = $(this).attr('author_id');
+                $(this).click(function () {
+                    $.ajax({
+                        type: 'POST',
+                        url: "{% url 'operation:attention' %}",
+                        data: {
+                            author_id: author_id,
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                        },
+                        success: function (data) {
+                            if (data.status == 'ok') {
+                                location.reload();
+                            }else{
+                                alert(data.msg);
+                            }
+                        }
+                    })
+                })
+            })
+        })
+    </script>
+{% endblock bottomfiles %}

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/user_center_info.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- 头部 -->
+    <header id="yang_header">
+        <nav class="navbar navbar-default navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#yang_nav"
+                        aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <img src="images/logo.png" alt="logo" height="40">
+                    </a>
+                </div>
+    
+    
+    
+    
+                <div class="collapse navbar-collapse" id="yang_nav">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+                        <li><a href="type.html"><span class="glyphicon glyphicon-th-list"></span> 分类</a></li>
+                        <li><a href="rank.html"><span class="glyphicon glyphicon-stats"></span> 排行</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#vip"><span class="glyphicon glyphicon-tower"></span> 会员</a></li>                        
+                    </ul>
+                    <form class="navbar-form navbar-left">
+                        <div class="input-group">
+                            <input type="text" name="book_name" class="form-control" placeholder="输入书名">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-danger"><span
+                                        class="glyphicon glyphicon-search"></span></button>
+                            </span>
+                        </div>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon glyphicon-log-out"></span> 注销</a></li>
+                        <li class="active"><a href="user_center_info.html"><span class="glyphicon glyphicon-education"></span> 个人中心</a></li>
+                        <!-- <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                        <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li> -->
+                    </ul>
+                </div>    
+            </div>
+        </nav>
+
+        <!-- vip模态框 -->
+        <div id="vip" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                        <h5 class="modal-title text-center" id="mySmallModalLabel">开通会员</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group">
+                            <div class="input-group-addon">账号</div>
+                            <input type="email" class="form-control" id="exampleInputAmount" value="1543250617@qq.com"
+                                placeholder="充值帐号">
+                        </div>
+                        <div id="vip_time" class="btn-group" data-toggle="buttons" style="width:100%; margin-top:10px;">
+                            <label class="btn btn-success active" style="width:33%;">
+                                <input type="radio" name="options" id="option1" autocomplete="off" value="10"> 一月
+                            </label>
+                            <label class="btn btn-success" style="width:33%;">
+                                <input type="radio" name="options" id="option2" autocomplete="off" value="25"> 一季
+                            </label>
+                            <label class="btn btn-success" style="width:33%;">
+                                <input type="radio" name="options" id="option3" autocomplete="off" value="85"> 一年
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <h4 class="text-muted pull-left">需支付：<strong id="price" style="color:red;">10</strong>&nbsp;元</h4>
+                        <button type="button" class="btn btn-danger">去支付</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- /头部 -->
+
+    <!-- 主要内容 -->
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <ul class="nav nav-tabs">
+                            <li role="presentation" class="active"><a href="user_center_info.html"><span class="glyphicon glyphicon-user"></span> 信息</a></li>
+                            <li role="presentation"><a href="user_center_bookshelf.html"><span class="glyphicon glyphicon-align-justify"></span> 书架</a></li>
+                            <li role="presentation"><a href="user_center_history.html"><span class="glyphicon glyphicon-knight"></span> 历史</a></li>
+                            <li role="presentation"><a href="user_center_attention.html"><span class="glyphicon glyphicon-heart"></span> 关注</a></li>
+                        </ul>
+                        <div id="info" class="col-md-4 col-md-offset-4 text-center">
+                            <form>                                
+                                <div id="avatar_input" class="form-group">
+                                    <label for="avatar"><img class="img-circle" src="images/touxiang1.jpg" id="img" alt="" width="70" height="70"></label>
+                                    <span class="fileinput-button btn btn-sm btn-danger">
+                                        <span>修改头像</span>
+                                        <input type="file" name="avatar" id="avatar">
+                                    </span>
+                                </div>
+                                <div class="badge" style="border-radius: 5px;margin-bottom: 10px;padding: 12px;background-color: #d1acd8;width: 100%;font-size: 14px;">你的会员将于2019-10-1到期</div> 
+                                <div class="form-group">                                            
+                                    <label for="nickname" class="sr-only">昵称</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">昵称</div>
+                                        <input type="text" class="form-control" name="nickname" id="nickname" placeholder="昵称" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group">                                            
+                                    <label for="address" class="sr-only">地址</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">地址</div>
+                                        <input type="text" class="form-control" name="address" id="address" placeholder="地址" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">                                            
+                                    <label for="mobile" class="sr-only">手机</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">手机</div>
+                                        <input type="text" class="form-control" name="mobile" id="mobile" placeholder="手机" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="radio">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">性别</div>
+                                        <select class="form-control" id="gender" name="gender" disabled>
+                                            <option>男</option>
+                                            <option>女</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" id="save" class="btn btn-primary" disabled>保存</button>
+                                <button type="button" id="modify" class="btn btn-danger">修改</button>                                
+                            </form>
+                                                 
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /主要内容 -->
+
+
+
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/user_center_info.js"></script>
+<script src="js/vip.js"></script>
+</body>
+</html>

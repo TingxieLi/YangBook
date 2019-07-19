@@ -1,0 +1,85 @@
+{% extends 'base_user_center.html' %}
+{% load static %}
+
+{% block title %}阳哥书城-个人信息{% endblock title %}
+
+{% block topfiles %}
+    <link rel="stylesheet" href="{% static 'css/user_center_info.css' %}">
+{% endblock topfiles %}
+
+{% block main_content %}
+    <div id="info" class="col-md-4 col-md-offset-4 text-center">
+
+        <form action="{% url 'user:change_avatar' %}" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <div id="avatar_input" class="form-group">
+                <label for="avatar">
+                    <img class="img-circle" src="{{ MEDIA_URL }}{{ request.user.avatar }}" id="img" alt="" width="70" height="70">
+                </label>
+                <span class="fileinput-button btn btn-danger">
+                    <span>选择头像</span>
+                    <input type="file" name="avatar" id="avatar">
+                </span>
+                <button type="submit" class="btn btn-primary">保存头像</button>
+            </div>
+        </form>
+
+        <form method="post">
+            {% csrf_token %}
+        {% if member %}
+            <div class="badge">
+                会员到期时间：{{ member.deadline }}
+            </div>
+            <div class="badge">
+                剩余推荐票数：{{ member.ticket_num }}
+            </div>
+        {% endif %}
+            <div class="form-group">
+                <label for="nickname" class="sr-only">昵称</label>
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-tag"></span>  昵称</div>
+                    <input type="text" class="form-control" name="nickname" id="nickname" placeholder="昵称" value="{{ request.user.nickname }}" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address" class="sr-only">地址</label>
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span> 地址</div>
+                    <input type="text" class="form-control" name="address" id="address" placeholder="地址" value="{{ request.user.address }}" disabled>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone" class="sr-only">手机</label>
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-phone"></span> 手机</div>
+                    <input type="text" class="form-control" name="phone" id="mobile" placeholder="手机" value="{{ request.user.phone }}" disabled>
+                </div>
+            </div>
+
+            <div class="radio">
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span> 性别</div>
+
+                    <div class="btn-group" data-toggle="buttons" id="gender_select">
+                      <label class="btn btn-primary {% if request.user.gender == 'boy' %}active{% endif %}">
+                        <input type="radio" name="gender" id="option2" autocomplete="off" value="boy" {% if request.user.gender == 'boy' %}checked{% endif %}> 男
+                      </label>
+                      <label class="btn btn-primary {% if request.user.gender == 'girl' %}active{% endif %}">
+                        <input type="radio" name="gender" id="option3" autocomplete="off" value="girl" {% if request.user.gender == 'boy' %}checked{% endif %}> 女
+                      </label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" id="save" class="btn btn-primary" disabled>保存</button>
+            <button type="button" id="modify" class="btn btn-danger">修改</button>
+        </form>
+
+    </div>
+{% endblock main_content %}
+
+{% block footer %}{% endblock footer %}
+
+{% block bottomfiles %}
+    <script src="{% static 'js/user_center_info.js' %}"></script>
+{% endblock bottomfiles %}

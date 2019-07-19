@@ -1,0 +1,69 @@
+/* 通用样式 */
+.panel{
+    margin-bottom: 0;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 头部 */
+
+#header nav{
+    height: 50px;
+    background-color: #222;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    line-height: 50px;
+}
+
+#header nav a{
+    margin-top:8px;
+}
+
+
+/* 作者作品 */
+
+ .badge{
+    border-radius: 0;
+    padding: 6px;
+ }
+
+ #book_list{
+    width: 100%;
+    float: right;
+}
+
+#book_list .media:first-child {
+   margin-top: 15px;
+}
+
+#book_list #books .book{
+   margin: 10px 0;
+}
+
+#book_list #books .desc{
+   height: 80px;
+   overflow: hidden;
+   line-height: 26px;
+}
+
+#book_list #books .type{
+    background-color: #d1acd8;
+}
+
+ .book .click_num{
+    background-color:#a1d0d2;
+ }
+
+ .book .collect_num{
+    background-color:#0AB4F7;
+    margin: 0 8px;
+ }
+
+ .book .recommend_num{
+    background-color:orange;
+ }
